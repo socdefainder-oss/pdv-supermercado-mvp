@@ -1,0 +1,13 @@
+node_modules
+.env
+.env.*
+!.env.example
+dist
+build
+coverage
+.vite
+*.tsbuildinfo
+server/prisma/seed.js
+server/data/
+.DS_Store
+*.log

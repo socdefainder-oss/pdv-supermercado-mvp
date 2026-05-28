@@ -1,0 +1,44 @@
+import cors from 'cors';
+import express from 'express';
+import helmet from 'helmet';
+import morgan from 'morgan';
+import { env } from './env.js';
+import { errorHandler } from './lib/http.js';
+import { authMiddleware } from './middleware/auth.js';
+import { authRouter } from './routes/auth.js';
+import { auditRouter } from './routes/audit.js';
+import { cashRegisterRouter } from './routes/cashRegister.js';
+import { categoriesRouter } from './routes/categories.js';
+import { commercialRouter } from './routes/commercial.js';
+import { dashboardRouter } from './routes/dashboard.js';
+import { entitiesRouter } from './routes/entities.js';
+import { productsRouter } from './routes/products.js';
+import { purchasesRouter } from './routes/purchases.js';
+import { reportsRouter } from './routes/reports.js';
+import { salesRouter } from './routes/sales.js';
+import { stockRouter } from './routes/stock.js';
+import { usersRouter } from './routes/users.js';
+
+export const app = express();
+
+app.use(helmet());
+app.use(cors({ origin: env.CORS_ORIGIN }));
+app.use(express.json());
+app.use(morgan('dev'));
+
+app.get('/health', (_req, res) => res.json({ ok: true }));
+app.use('/auth', authRouter);
+app.use(authMiddleware);
+app.use('/users', usersRouter);
+app.use('/entities', entitiesRouter);
+app.use('/categories', categoriesRouter);
+app.use('/products', productsRouter);
+app.use('/cash-register', cashRegisterRouter);
+app.use('/sales', salesRouter);
+app.use('/reports', reportsRouter);
+app.use('/dashboard', dashboardRouter);
+app.use('/stock', stockRouter);
+app.use('/purchases', purchasesRouter);
+app.use('/commercial', commercialRouter);
+app.use('/audit', auditRouter);
+app.use(errorHandler);

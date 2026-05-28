@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color: #17211f; background: #f7f4ea; }
+body { margin: 0; min-height: 100vh; font-family: Aptos, 'Segoe UI', sans-serif; }
+button, input, select { font: inherit; }
+.glass { background: rgba(255, 255, 255, 0.78); backdrop-filter: blur(18px); }
+.field { @apply w-full rounded-md border border-line bg-white px-3 py-2 text-sm outline-none ring-leaf/20 transition focus:ring-4; }
+.btn { @apply inline-flex items-center justify-center gap-2 rounded-md px-4 py-2 text-sm font-semibold transition disabled:cursor-not-allowed disabled:opacity-50; }
+.btn-primary { @apply btn bg-moss text-white hover:bg-ink; }
+.btn-secondary { @apply btn border border-line bg-white text-ink hover:border-moss; }
+.btn-danger { @apply btn bg-danger text-white hover:bg-red-800; }
+.panel { @apply rounded-lg border border-line bg-white shadow-sm; }
+.table-cell { @apply px-3 py-2 text-left text-sm; }

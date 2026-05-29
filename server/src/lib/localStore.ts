@@ -19,6 +19,8 @@ function now() {
 }
 
 const categoryNames = ['Bebidas', 'Alimentos', 'Limpeza', 'Higiene', 'Hortifruti'];
+const adminEmail = 'admin@supermercadodagente.com';
+const cashierEmail = 'caixa@supermercadodagente.com';
 const productSeed = [
   ['Arroz 5kg', '7891000000011', 'Alimentos', 'PCT', 1890, 2790, 60, 10],
   ['Feijao 1kg', '7891000000028', 'Alimentos', 'PCT', 590, 899, 80, 15],
@@ -35,8 +37,8 @@ const productSeed = [
 function initialData() {
   const createdAt = now();
   const users = [
-    { id: id('usr'), name: 'Administrador', email: 'admin@supermercado.com', passwordHash: bcrypt.hashSync('Admin@123', 10), role: 'ADMIN', active: true, discountLimitCents: 99999999, createdAt, updatedAt: createdAt },
-    { id: id('usr'), name: 'Operador Caixa', email: 'caixa@supermercado.com', passwordHash: bcrypt.hashSync('Caixa@123', 10), role: 'CASHIER', active: true, discountLimitCents: 2000, createdAt, updatedAt: createdAt },
+    { id: id('usr'), name: 'Administrador', email: adminEmail, passwordHash: bcrypt.hashSync('Admin@123', 10), role: 'ADMIN', active: true, discountLimitCents: 99999999, createdAt, updatedAt: createdAt },
+    { id: id('usr'), name: 'Operador Caixa', email: cashierEmail, passwordHash: bcrypt.hashSync('Caixa@123', 10), role: 'CASHIER', active: true, discountLimitCents: 2000, createdAt, updatedAt: createdAt },
   ];
   const categories = categoryNames.map((name) => ({ id: id('cat'), name, active: true, createdAt, updatedAt: createdAt }));
   const products = productSeed.map(([name, barcode, categoryName, unit, costPriceCents, salePriceCents, stockQuantity, minStock]) => ({

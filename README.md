@@ -1,6 +1,6 @@
-# PDV Supermercado MVP
+# Supermercado da Gente - PDV
 
-MVP web de PDV para supermercado pequeno ou medio, com login, usuarios por perfil, cadastro de produtos, leitura por codigo de barras, carrinho, desconto, pagamento, caixa, baixa automatica de estoque e relatorios basicos.
+MVP web de PDV do Supermercado da Gente, com login, usuarios por perfil, cadastro de produtos, leitura por codigo de barras, carrinho, desconto, pagamento, caixa, baixa automatica de estoque e relatorios basicos.
 
 Esta versao nao emite NFC-e, SAT, cupom fiscal oficial, TEF ou Pix bancario. O objetivo e validar a operacao interna e deixar a arquitetura pronta para evolucao fiscal e integracoes.
 
@@ -86,14 +86,14 @@ Com essa opcao no `server/.env`, o backend cria automaticamente usuarios, catego
 Admin:
 
 ```text
-E-mail: admin@supermercado.com
+E-mail: admin@supermercadodagente.com
 Senha: Admin@123
 ```
 
 Operador:
 
 ```text
-E-mail: caixa@supermercado.com
+E-mail: caixa@supermercadodagente.com
 Senha: Caixa@123
 ```
 

@@ -10,6 +10,7 @@ type Notice = { type: 'ok' | 'error'; text: string } | null;
 
 const units: Unit[] = ['UN', 'KG', 'CX', 'LT', 'ML', 'PCT'];
 const paymentLabels: Record<PaymentMethod, string> = { CASH: 'Dinheiro', DEBIT_CARD: 'Debito', CREDIT_CARD: 'Credito', PIX: 'Pix' };
+const storeName = 'Supermercado da Gente';
 
 export function App() {
   const [user, setUser] = useState<User | null>(null);
@@ -26,7 +27,7 @@ export function App() {
     <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,#dce8d7,transparent_34%),linear-gradient(135deg,#f7f4ea,#edf1e9)]">
       <aside className="fixed inset-y-0 left-0 hidden w-64 border-r border-line bg-white/90 p-4 lg:block">
         <div className="mb-6 rounded-lg bg-ink p-4 text-white">
-          <p className="font-display text-xl font-bold">PDV Mercado</p>
+          <p className="font-display text-xl font-bold">{storeName}</p>
           <p className="text-sm text-white/70">{user.name}</p>
         </div>
         <nav className="space-y-2">
@@ -46,7 +47,7 @@ export function App() {
       </aside>
       <div className="sticky top-0 z-10 border-b border-line bg-white/95 p-3 shadow-sm lg:hidden">
         <div className="mb-2 flex items-center justify-between">
-          <strong className="font-display">PDV Mercado</strong>
+          <strong className="font-display">{storeName}</strong>
           <button className="btn-secondary px-3" onClick={() => { clearToken(); setUser(null); }}><LogOut size={16} />Sair</button>
         </div>
         <div className="flex gap-2 overflow-x-auto pb-1">
@@ -82,7 +83,7 @@ export function App() {
 }
 
 function LoginPage({ onLogin }: { onLogin: (user: User) => void }) {
-  const [email, setEmail] = useState('admin@supermercado.com');
+  const [email, setEmail] = useState('admin@supermercadodagente.com');
   const [password, setPassword] = useState('Admin@123');
   const [error, setError] = useState('');
 
@@ -101,7 +102,7 @@ function LoginPage({ onLogin }: { onLogin: (user: User) => void }) {
   return (
     <div className="grid min-h-screen place-items-center bg-[linear-gradient(120deg,#17211f,#315c4f_52%,#f7f4ea_52%)] p-4">
       <form onSubmit={submit} className="glass w-full max-w-md rounded-lg border border-white/60 p-8 shadow-2xl">
-        <h1 className="font-display text-3xl font-bold text-ink">PDV Supermercado</h1>
+        <h1 className="font-display text-3xl font-bold text-ink">{storeName}</h1>
         <p className="mt-1 text-sm text-ink/70">Operacao interna, estoque e caixa.</p>
         <label className="mt-6 block text-sm font-semibold">E-mail</label>
         <input className="field mt-1" value={email} onChange={(event) => setEmail(event.target.value)} required />

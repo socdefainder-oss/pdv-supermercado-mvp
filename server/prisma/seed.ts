@@ -4,6 +4,8 @@ import { PrismaClient, ProductUnit, UserRole } from '@prisma/client';
 const prisma = new PrismaClient();
 
 const categories = ['Bebidas', 'Alimentos', 'Limpeza', 'Higiene', 'Hortifruti'];
+const adminEmail = 'admin@supermercadodagente.com';
+const cashierEmail = 'caixa@supermercadodagente.com';
 
 const products = [
   ['Arroz 5kg', '7891000000011', 'Alimentos', ProductUnit.PCT, 1890, 2790, '60', '10'],
@@ -23,15 +25,15 @@ async function main() {
   const cashierHash = await bcrypt.hash('Caixa@123', 10);
 
   await prisma.user.upsert({
-    where: { email: 'admin@supermercado.com' },
+    where: { email: adminEmail },
     update: {},
-    create: { name: 'Administrador', email: 'admin@supermercado.com', passwordHash: adminHash, role: UserRole.ADMIN, discountLimitCents: 99999999 },
+    create: { name: 'Administrador', email: adminEmail, passwordHash: adminHash, role: UserRole.ADMIN, discountLimitCents: 99999999 },
   });
 
   await prisma.user.upsert({
-    where: { email: 'caixa@supermercado.com' },
+    where: { email: cashierEmail },
     update: {},
-    create: { name: 'Operador Caixa', email: 'caixa@supermercado.com', passwordHash: cashierHash, role: UserRole.CASHIER, discountLimitCents: 2000 },
+    create: { name: 'Operador Caixa', email: cashierEmail, passwordHash: cashierHash, role: UserRole.CASHIER, discountLimitCents: 2000 },
   });
 
   for (const name of categories) {
